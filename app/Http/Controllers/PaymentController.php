@@ -49,14 +49,16 @@ class PaymentController extends Controller
 			// For credit card transaction, we need to check whether transaction is challenge by FDS or not
 			if ($type == 'credit_card') {
 				if ($fraud == 'challenge') {
-					// TODO set payment status in merchant's database to 'Challenge by FDS'
-					// TODO merchant should decide whether this transaction is authorized or not in MAP
 					$paymentStatus = Payment::CHALLENGE;
 				} else {
 					// TODO set payment status in merchant's database to 'Success'
 					$paymentStatus = Payment::SUCCESS;
 				}
+			} else {
+				// TODO set payment status in merchant's database to 'Success'
+				$paymentStatus = Payment::SUCCESS;
 			}
+
 		} else if ($transaction == 'settlement') {
 			// TODO set payment status in merchant's database to 'Settlement'
 			$paymentStatus = Payment::SETTLEMENT;
