@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('backend/plugins/bootstrap-datepicker3.min.css') }}">
 
     <!-- CDN dataTable JQuery Bootstrap 5 -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
 
     <style>
         .form-control {
@@ -162,8 +162,12 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- DataTable -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
@@ -177,42 +181,23 @@
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fas/theme.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/summernote/summernote-bs4.min.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
 
     <script>
+        // Initialisasi datatables
         $(document).ready(function() {
-            $('#dataTable').DataTable({
-                "deferRender": true,
-                "oLanguage": {
-                    "sLengthMenu": "_MENU_",
-                },
-                "language": {
-                    "search": "",
-                    "searchPlaceholder": "Search..."
-                },
-
-            });
+            $('#dataTable').DataTable(
+                {
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Indonesian.json"
+                    },
+                    // Entrie per halaman default 5
+                    "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]]
+                }
+            );
         });
     </script>
 
     <script>
-        // initialize dataTable
-        $(document).ready(function() {
-            $('#dataTable').DataTable({
-                "deferRender": true,
-                "destroy": true,
-                "autoWidth": false,
-                "oLanguage": {
-                    "sLengthMenu": "_MENU_",
-                },
-                "language": {
-                    "search": "",
-                    "searchPlaceholder": "Search..."
-                },
-            });
-        });
-
         // Get all input elements of type file
         const fileInputs = document.querySelectorAll('input[type="file"]');
         const inputs = document.querySelectorAll('input.form-control');

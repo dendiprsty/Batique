@@ -19,7 +19,23 @@ Route::post('payments/notification', [\App\Http\Controllers\PaymentController::c
 
 Route::get('payments/completed', [\App\Http\Controllers\PaymentController::class, 'completed'])->name('payment.completed');
 
-Route::get('payments/failed', [\App\Http\Controllers\PaymentController::class, 'failed'])->name('payment.failed');
+// Route::get('payments/failed', [\App\Http\Controllers\PaymentController::class, 'failed'])->name('payment.failed');
+
+Route::get('/payments/failed', function () {
+    // Mengambil nilai order_id dan status_code dari URL
+    $order_id = request()->query('order_id');
+    $status_code = request()->query('status_code');
+
+    // Melakukan sesuatu dengan nilai order_id dan status_code
+    // Misalnya, menampilkan pesan error kepada user
+
+    return view('payments.failed', [
+        'order_id' => $order_id,
+        'status_code' => $status_code,
+    ]);
+});
+
+
 Route::get('payments/unfinish', [\App\Http\Controllers\PaymentController::class, 'unfinish'])->name('payment.unfinish');
 Route::get('dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
 

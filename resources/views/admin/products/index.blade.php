@@ -50,10 +50,14 @@
                         <td>{{ $product->weight }} (gram)</td>
                         <td>{{ $product->category ? $product->category->name : NULL }}</td>
                         <td>
-                            @if($product->status == "1")
-                            <span class="badge badge-success">Tersedia</span>
+                            @if($product->status == 'Active')
+                            <span class="badge badge-success">
+                                Tersedia
+                            </span>
                             @else
-                            <span class="badge badge-danger">Habis</span>
+                            <span class="badge badge-danger">
+                                Habis
+                            </span>
                             @endif
                         </td>
                         <td>

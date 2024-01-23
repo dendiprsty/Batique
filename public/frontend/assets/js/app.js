@@ -11,7 +11,7 @@ function getShippingCostOptions(city_id) {
             $("#shipping-cost-option").append(
                 "<option value>- Please Select -</option>"
             );
-            $("#test").val("Place order");
+            $("#test").val("Lanjutkan Pembayaran");
 
             $.each(response.results, function (key, result) {
                 $("#shipping-cost-option").append(
@@ -49,7 +49,7 @@ function getQuickView(product_slug) {
         $.get("/orders/cities?province_id=" + province_id, function (data) {
             $("#city-id").empty();
             $("#city-id").append("<option value>- Please Select -</option>");
-            $("#test").val("Place order");
+            $("#test").val("Lanjutkan Pembayaran");
             $.each(data.cities, function (city_id, city) {
                 $("#city-id").append(
                     '<option value="' + city_id + '">' + city + "</option>"
@@ -67,7 +67,7 @@ function getQuickView(product_slug) {
             $("#shipping-city").append(
                 "<option value>- Please Select -</option>"
             );
-            $("#test").val("Place order");
+            $("#test").val("Lanjutkan Pembayaran");
 
             $.each(data.cities, function (city_id, city) {
                 $("#shipping-city").append(
@@ -117,7 +117,7 @@ function getQuickView(product_slug) {
             success: function (response) {
                 $("#test").val("Loading...");
                 $(".total-amount").html(response.data.total);
-                $("#test").val("Place order");
+                $("#test").val("Lanjutkan Pembayaran");
             },
         });
     });

@@ -38,7 +38,7 @@ class OrderController extends Controller
 		$cities = $this->getCities($request->query('province_id'));
 		return response()->json(['cities' => $cities]);
 	}
-	
+
 	public function shippingCost(Request $request)
 	{
 		$items = \Cart::getContent();
@@ -51,7 +51,7 @@ class OrderController extends Controller
         $destination = $request->input('city_id');
 		return $this->getShippingCost($destination, $totalWeight);
 	}
-	
+
 	private function getShippingCost($destination, $weight)
 	{
 		$params = [
@@ -63,9 +63,9 @@ class OrderController extends Controller
 		$results = [];
 		foreach ($this->couriers as $code => $courier) {
 			$params['courier'] = $code;
-			
+
             $response = $this->rajaOngkirRequest('cost', $params, 'POST');
-			
+
 			if (!empty($response['rajaongkir']['results'])) {
 				foreach ($response['rajaongkir']['results'] as $cost) {
 					if (!empty($cost['costs'])) {
@@ -94,7 +94,7 @@ class OrderController extends Controller
 			'weight' => $weight,
 			'results' => $results,
 		];
-		
+
 		return $response;
 	}
 
@@ -150,7 +150,7 @@ class OrderController extends Controller
 
 		return $response;
 	}
-	
+
 	private function addShippingCostToCart($serviceName, $cost)
 	{
 		$condition = new \Darryldecode\Cart\CartCondition(
@@ -195,13 +195,13 @@ class OrderController extends Controller
 			}
 
 			$selectedShipping = $this->getSelectedShipping($destination,$totalWeight, $params['shipping_service']);
-			
+
 			$baseTotalPrice = \Cart::getSubTotal();
 			$shippingCost = $selectedShipping['cost'];
 			$discountAmount = 0;
 			$discountPercent = 0;
 			$grandTotal = ($baseTotalPrice + $shippingCost) - $discountAmount;
-	
+
 			$orderDate = date('Y-m-d H:i:s');
 			$paymentDue = (new \DateTime($orderDate))->modify('+3 day')->format('Y-m-d H:i:s');
 
@@ -226,7 +226,7 @@ class OrderController extends Controller
 				'status' => Order::CREATED,
 				'order_date' => $orderDate,
 				'payment_due' => $paymentDue,
-				'payment_status' => Order::UNPAID,
+				'payment_status' => Order::PAID,
 				'base_total_price' => $baseTotalPrice,
 				'discount_amount' => $discountAmount,
 				'discount_percent' => $discountPercent,
@@ -273,7 +273,7 @@ class OrderController extends Controller
 					];
 
 					$orderItem = OrderItem::create($orderItemParams);
-					
+
 					if ($orderItem) {
 						$product = Product::findOrFail($product->id);
 						$product->quantity -= $item->quantity;
@@ -282,7 +282,7 @@ class OrderController extends Controller
 				}
 			}
 
-			
+
 
 			$shippingFirstName = isset($params['ship_to']) ? $params['shipping_first_name'] : $params['first_name'];
 			$shippingLastName = isset($params['ship_to']) ? $params['shipping_last_name'] : $params['last_name'];
@@ -351,7 +351,7 @@ class OrderController extends Controller
 
 		try{
 			$snap = Snap::createTransaction($transaction_details);
-	
+
 			$order->payment_token = $snap->token;
 			$order->payment_url = $snap->redirect_url;
 			$order->save();
@@ -384,8 +384,8 @@ class OrderController extends Controller
 	public function show($id)
 	{
 		$order = Order::where('user_id', auth()->id())->findOrFail($id);
-		
+
 		return view('frontend.orders.show', compact('order'));
 	}
-	
+
 }

@@ -44,9 +44,12 @@
                         <td>{{ $shipment->total_qty }}</td>
                         <td>{{ $shipment->total_weight }}</td>
                         <td>
-                            <div class="btn-group btn-group-sm">
+                            <div class="">
                                 <a href="{{ route('admin.orders.show', $shipment->order->id) }}" class="btn btn-sm btn-primary">
                                     Detail
+                                </a>
+                                <a href="{{ route('admin.shipments.edit', $shipment->id) }}" class="btn ml-1 btn-sm btn-secondary">
+                                    Update
                                 </a>
                             </div>
                         </td>

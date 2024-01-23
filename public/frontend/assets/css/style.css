@@ -2868,7 +2868,7 @@ a.banner-book-style-btn:hover {
     color: #fff;
 }
 .btn-hover::before {
-    background: #000 none repeat scroll 0 0;
+    background: #4F200D none repeat scroll 0 0;
     bottom: 0;
     content: "";
     left: 0;
@@ -2880,6 +2880,7 @@ a.banner-book-style-btn:hover {
     transition-property: transform;
     transition-timing-function: ease-out;
     z-index: -1;
+    border-radius: 5px;
 }
 .btn-hover:hover::before {
     transform: scaleX(1);
@@ -4470,15 +4471,28 @@ a.icon-cart-furniture span.green {
 }
 .popular-product-active.owl-carousel .owl-nav div,
 .popular-product-active-2.owl-carousel .owl-nav div {
-    left: -75px;
     position: absolute;
     top: 39%;
+    z-index: 1;
 }
+
+.popular-product-active.owl-carousel .owl-nav div.owl-prev,
+.popular-product-active-2.owl-carousel .owl-nav div.owl-prev {
+    left: -75px;
+}
+
 .popular-product-active.owl-carousel .owl-nav div.owl-next,
 .popular-product-active-2.owl-carousel .owl-nav div.owl-next {
-    left: auto;
     right: -76px;
 }
+
+@media (max-width: 767px) {
+    .popular-product-active.owl-carousel .owl-nav div,
+    .popular-product-active-2.owl-carousel .owl-nav div {
+        display: none;
+    }
+}
+
 .discount-img > img {
     width: 100%;
 }
@@ -6932,12 +6946,12 @@ p.checkout-coupon input[type="submit"] {
     border-right: medium none;
     font-size: 14px;
     padding: 15px 0;
-    text-align: center;
+    text-align: left;
 }
 .your-order-table table th {
     border-top: medium none;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
     vertical-align: middle;
     white-space: nowrap;
@@ -6988,8 +7002,9 @@ p.checkout-coupon input[type="submit"] {
     margin-left: 15px;
 }
 .order-button-payment input {
-    background: #464646 none repeat scroll 0 0;
+    background: #C07F00 none repeat scroll 0 0;
     border: medium none;
+    border-radius: 15px;
     color: #fff;
     font-size: 17px;
     font-weight: 600;
@@ -8159,8 +8174,8 @@ a.bundle-btn {
     margin-bottom: 30px;
 }
 .contact-btn {
-    background-color: #333;
-    border: 1px solid transparent;
+    background-color: #FF8400;
+    border: none;
     color: #fff;
     display: inline-block;
     padding: 11px 25px 13px;
@@ -8828,11 +8843,10 @@ a.bundle-btn {
     bottom: -13px;
     content: "";
     height: 2px;
-    left: 0;
+    left: 2px;
     margin: 0 auto;
     position: absolute;
-    right: 0;
-    text-align: center;
+    text-align: left;
     width: 60px;
 }
 .section-title-furits {
@@ -9466,15 +9480,15 @@ input.cart-plus-minus-box {
     z-index: 5;
 }
 .quickview-btn-wishlist > a {
-    border: 1px solid #dcdcdc;
-    color: #727272;
+    color: #fff;
     display: inline-block;
     font-size: 22px;
     padding: 11px 18px 2px;
     z-index: 9;
+    background-color: #E74646;
 }
 .quickview-btn-wishlist > a:hover {
-    border: 1px solid transparent;
+    background-color: #050035;
 }
 .quickview-btn-cart {
     margin: 0 30px;
@@ -9539,7 +9553,7 @@ input.cart-plus-minus-box {
 .main-footer{
     position:relative;
     padding:110px 0px 0px;
-    background-color: #f9c000;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(249, 232, 51, 1) 0%, rgba(250, 196, 59, 1) 100.2%);
     background-repeat:repeat-x;
     background-position:right bottom;
     margin-top: 100px;
@@ -9771,5 +9785,19 @@ input.cart-plus-minus-box {
 .main-footer .footer-bottom .footer-nav li a:hover{
     color:#ff6666;
     text-decoration:underline;
+}
+
+.top-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.header-top-furniture-scrolled {
+    background-color: #ffffff;
+    /* ganti dengan warna latar belakang navbar yang diinginkan */
 }
 

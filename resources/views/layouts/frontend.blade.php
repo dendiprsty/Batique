@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" integrity="sha512-WEQNv9d3+sqyHjrqUZobDhFARZDko2wpWdfcpv44lsypsSuMO0kHGd3MQ8rrsBn/Qa39VojphdU6CMkpJUmDVw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.css" integrity="sha512-phGxLIsvHFArdI7IyLjv14dchvbVkEDaH95efvAae/y2exeWBQCQDpNFbOTdV1p4/pIa/XtbuDCnfhDEIXhvGQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- All Custom Vendor CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/themify-icons.css') }}">
@@ -62,7 +63,8 @@
 <body>
 
     <!-- Header -->
-    <header>
+    <header class="top-header">
+
         <div class="header-top-furniture wrapper-padding-2 res-header-sm">
             <div class="container-fluid">
                 <div class="header-bottom-wrapper">
@@ -167,7 +169,7 @@
         </div>
 
         <!-- Bar Akun - LOGIN | REGISTER | PROFIL -->
-        <div class="header-bottom-furniture wrapper-padding-2 py-3">
+        <div class="header-bottom-furniture wrapper-padding-2 pb-2">
             <div class="container-fluid">
                 <div class="furniture-bottom-wrapper">
                     <div class="furniture-login">
@@ -336,7 +338,7 @@
                     <div class="column col-lg-6 col-md-12 col-sm-12">
                         <div class="copyright"><span class="theme_color">Batique Shop </span> &copy; <script>
                                 document.write(new Date().getFullYear())
-                        </script> All Right Reserved</div>
+                            </script> All Right Reserved</div>
                     </div>
                     <div class="column col-lg-6 col-md-12 col-sm-12">
                         <ul class="footer-nav">
@@ -366,6 +368,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js" integrity="sha512-qOBWNAMfkz+vXXgbh0Wz7qYSLZp6c14R0bZeVX2TdQxWpuKr6yHjBIM69fcF8Ve4GUX6B6AKRQJqiiAmwvmUmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- All Custom Javascript -->
     <script src="{{ asset('frontend/assets/js/ajax-mail.js') }}"></script>
@@ -408,6 +411,15 @@
                     }
                 }
             });
+        });
+    </script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        window.addEventListener('scroll', function() {
+            var navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('navbar-scrolled', window.scrollY > 0);
         });
     </script>
 </body>

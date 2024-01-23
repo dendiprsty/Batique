@@ -65,6 +65,7 @@
             theme: "fas",
             maxFileCount: 1,
             allowedFileTypes: ['image'],
+            allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
             showCancel: true,
             showRemove: false,
             showUpload: false,

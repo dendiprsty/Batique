@@ -64,7 +64,9 @@
                     </tr>
                     @empty
                     <tr>
-                        <td class="text-center" colspan="6">No categories found.</td>
+                        <td colspan="6" class="text-center">
+                            Data tidak tersedia
+                        </td>
                     </tr>
                     @endforelse
                 </tbody>
